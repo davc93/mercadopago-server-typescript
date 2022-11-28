@@ -10,15 +10,15 @@ export async function sendEmail(data:unknown,subject:string) {
   let transporter = nodemailer.createTransport({
     service:'gmail',
     auth: {
-      user: 'davc93@gmail.com', // generated ethereal user
+      user: '', // generated ethereal user
       pass: config.GMAIL_APIKEY, // generated ethereal password
     },
   });
 
   // send mail with defined transport object
   let info = await transporter.sendMail({
-    from: '"web site 👻" <davc93@gmail.com>', // sender address
-    to: "davc93@gmail.com", // list of receivers
+    from: '"web site 👻" <>', // sender address
+    to: "", // list of receivers
     subject: subject, // Subject line
     text: `${JSON.stringify(data)}`, // plain text body
     html: `

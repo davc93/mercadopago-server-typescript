@@ -22,7 +22,7 @@ const createPreference = async (clientPreference: any) => {
         },
         auto_return: "approved",
         notification_url: `${config.SERVER_DOMAIN}/notification_url`,
-        external_reference: "davc93@gmail.com",
+        external_reference: "",
     };
 
 
