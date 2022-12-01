@@ -2,12 +2,12 @@
 import payments from '../../payments'
 
 
-const collection = 'preference'
+const collection = 'preferences'
 const controller  = (injectedStore:any) => {
     const store = injectedStore
     const upsert = async (data:any) => {
         const preference =  await payments.createPreference(data)
-        store.upsert(preference,collection,{id:'string'})
+        store.upsert(preference,collection)
         return preference
     }
 

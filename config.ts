@@ -9,9 +9,9 @@ export const config = {
     GMAIL_APIKEY:process.env.GMAIL_APIKEY,
     DB:{
         MONGO:{
+        NAME:process.env.DB_NAME,
 		USERNAME:process.env.MONGO_USERNAME,
-		PASSWORD:process.env.MONGO_PASSWORD,
-        CONNECTION: ``
+		PASSWORD:process.env.MONGO_PASSWORD, 
         }
     }
 

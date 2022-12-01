@@ -1,45 +1,30 @@
-import mongoose from "mongoose";
 import { config } from "../config";
-const Schema = (controllerSchema: any) => {
-    return new mongoose.Schema(controllerSchema)
-}
+import { MongoClient } from "mongodb";
+const atlas = true
+const uri =  atlas ? `mongodb+srv://davc93:${config.DB.MONGO.PASSWORD}@mercadopago-davc93.sjfl7ar.mongodb.net/?retryWrites=true&w=majority`: `mongodb://${config.DB.MONGO.USERNAME}:${config.DB.MONGO.PASSWORD}@localhost:27017/`
+const client = new MongoClient(uri);
+async function insert(data: any, collection: string) {
 
-const model = (collection: string, schema: any) => {
-
-    return mongoose.model(collection, Schema(schema))
-
-}
-
-async function main() {
-
-    try {
-        const response = await mongoose.connect(`${config.DB.MONGO.CONNECTION}`)
-    } catch (error: any) {
-        throw new Error(error)
+    async function run() {
+        try {
+            const database = client.db('mercadopago');
+            const preferences = database.collection(collection);
+            // Query for a movie that has the title 'Back to the Future'
+            const result =  await preferences.insertOne(data)
+            console.log(result.insertedId);
+        } catch(error) {
+            console.log(error)
+        }
     }
 
+    run()
+    
 }
 
-
-main().catch(err => console.log(err));
-
-
-
-async function insert(data: any, collection: string, schema: any) {
-    const modelClass = model(collection, schema)
-    debugger
-    const modelInstance = new modelClass(data)
-    const response = await modelInstance.save()
+function upsert(data: any, collection: string) {
+    return insert(data, collection);
 }
-
-function upsert(data: any, collection: string, schema: any) {
-
-    return insert(data, collection, schema)
-
-}
-
-
 
 export default {
-    upsert
-}
+    upsert,
+};
