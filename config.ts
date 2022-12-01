@@ -6,7 +6,10 @@ export const config = {
     SERVER_DOMAIN: process.env.SERVER_DOMAIN ?? 'localhost',
     INTEGRATOR_ID: process.env.INTEGRATOR_ID,
     SITE_DOMAIN: process.env.SITE_DOMAIN ?? "localhost" ,
-    GMAIL_APIKEY:process.env.GMAIL_APIKEY,
+    GMAIL:{
+        EMAIL: process.env.EMAIL,
+        APIKEY:process.env.APIKEY
+    },
     DB:{
         MONGO:{
         NAME:process.env.DB_NAME,

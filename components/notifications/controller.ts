@@ -1,6 +1,6 @@
 import { sendEmail } from "../../mail";
 
-const collection = 'notification'
+const collection = 'notifications'
 const controller  = (injectedStore:any) => {
     const store = injectedStore
 
@@ -8,13 +8,12 @@ const controller  = (injectedStore:any) => {
 
     const data = {
         body: req.body,
-        query: req.query,
-        headers: req.header,
+        headers: req.headers,
       };
       if (data.body) {
-        sendEmail(data,'Notifacion MercadoPago App-davc93');
+        sendEmail(data,'Notifacion MercadoPago');
 
-        store.upsert(data,collection,{id:'string'})
+        store.upsert(data,collection)
         return {
             message:'Todo bien'
         }

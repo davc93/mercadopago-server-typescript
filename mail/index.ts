@@ -10,19 +10,19 @@ export async function sendEmail(data:unknown,subject:string) {
   let transporter = nodemailer.createTransport({
     service:'gmail',
     auth: {
-      user: '', // generated ethereal user
-      pass: config.GMAIL_APIKEY, // generated ethereal password
+      user: config.GMAIL.EMAIL, // generated ethereal user
+      pass: config.GMAIL.APIKEY, // generated ethereal password
     },
   });
 
   // send mail with defined transport object
   let info = await transporter.sendMail({
-    from: '"web site 👻" <>', // sender address
-    to: "", // list of receivers
+    from: `"web site 👻" <${config.GMAIL.EMAIL}>`, // sender address
+    to: `${config.GMAIL.EMAIL}`, // list of receivers
     subject: subject, // Subject line
     text: `${JSON.stringify(data)}`, // plain text body
     html: `
-    <h3>Notificacion desde tu servidor de pagos de mercadopago en davc93</h3>
+    <h3>Notificacion desde tu servidor de pagos de mercadopago</h3>
     <span>${JSON.stringify(data)}</span>
     
     `, // html body

@@ -1,6 +1,6 @@
 import { config } from "../config";
 import { MongoClient } from "mongodb";
-const atlas = true
+const atlas = false
 const uri =  atlas ? `mongodb+srv://davc93:${config.DB.MONGO.PASSWORD}@mercadopago-davc93.sjfl7ar.mongodb.net/?retryWrites=true&w=majority`: `mongodb://${config.DB.MONGO.USERNAME}:${config.DB.MONGO.PASSWORD}@localhost:27017/`
 const client = new MongoClient(uri);
 async function insert(data: any, collection: string) {
