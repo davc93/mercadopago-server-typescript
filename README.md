@@ -39,6 +39,13 @@ this domain is necesarry for client side fetch when they ask for preference
 SERVER_DOMAIN=
 ```
 
+## Deploy
+
+
+### Vercel
+
+### Docker
+
 
 ## Store mode
 

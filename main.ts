@@ -17,8 +17,8 @@ app.use(express.json());
 app.use(cors());
 payments.configure()
 
-app.use('/create_preference',preferences)
-app.use('/notification_url', notifications)
+app.use('/api/create_preference',preferences)
+app.use('/api/notification_url', notifications)
 app.use(errors);
 app.listen(config.PORT,()=>{
   console.log('Servidor escuchando peticiones')
