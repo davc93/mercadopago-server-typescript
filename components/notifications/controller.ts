@@ -11,9 +11,10 @@ const controller  = (injectedStore:any) => {
         headers: req.headers,
       };
       if (data.body) {
-        sendEmail(data,'Notifacion MercadoPago');
-
-        store.upsert(data,collection)
+        // sendEmail(data,'Notifacion MercadoPago');
+        if(store){
+          store.upsert(data,collection)
+        }
         return {
             message:'Todo bien'
         }

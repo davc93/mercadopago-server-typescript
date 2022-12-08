@@ -1,6 +1,8 @@
 import controller from "./controller";
-import store from '../../store/mongo'
+import mongoStore from '../../store/mongo'
 
+let store;
 
+// store = mongoStore
 
 export default controller(store)
